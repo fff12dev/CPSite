@@ -17,7 +17,3 @@ vids.forEach(v=>{v.muted=true;v.defaultMuted=true});
 const speed=()=>tr.style.setProperty('--dur',Math.round(tr.scrollWidth/2/60)+'s');
 speed();addEventListener('resize',speed);addEventListener('load',speed);
 new IntersectionObserver(es=>es.forEach(e=>vids.forEach(v=>e.isIntersecting&&!still?v.play().catch(()=>{}):v.pause()))).observe(gal);
-// Телефон: плаваюча кнопка заявки, поки на екрані немає першого екрана й контактів
-const fab=document.querySelector('.fab'),vis=new Set();
-const fo=new IntersectionObserver(es=>{es.forEach(e=>e.isIntersecting?vis.add(e.target):vis.delete(e.target));fab.classList.toggle('show',!vis.size)});
-['top','contact'].forEach(id=>fo.observe(document.getElementById(id)));
